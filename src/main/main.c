@@ -952,6 +952,7 @@ static void pause_loop(void)
 
 /* called on vertical interrupt.
  * Allow the core to perform various things */
+#ifndef IN_OPENEMU
 void new_vi(void)
 {
 #if defined(PROFILE)
@@ -967,6 +968,7 @@ void new_vi(void)
 
     netplay_check_sync(&g_dev.r4300.cp0);
 }
+#endif
 
 static void main_switch_pak(int control_id)
 {
