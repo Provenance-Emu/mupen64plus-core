@@ -198,7 +198,14 @@ const char * osal_get_user_configpath(void)
     /* append the given sub-directory to the path given by the environment variable */
     if (path[strlen(path)-1] != '/')
         strcat(path, "/");
-    strcat(path, "Library/Application Support/Mupen64Plus/");
+
+#if TARGET_OS_TV
+	strcat(path, "Library/Caches/com.provenance.n64/");
+#elif TARGET_OS_IPHONE
+	strcat(path, "Documents/com.provenance.n64/");
+#else
+	strcat(path, "Library/Application Support/Mupen64Plus/");
+#endif
 
     /* try to create the resulting directory tree, or return successfully if it already exists */
     if (osal_mkdirp(path, 0700) != 0)
