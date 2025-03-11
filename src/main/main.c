@@ -1063,7 +1063,7 @@ static void pause_loop(void)
 
 /* called on vertical interrupt.
  * Allow the core to perform various things */
-void new_vi(void)
+void new_vi_orig(void)
 {
 #if defined(PROFILE)
     timed_sections_refresh();
